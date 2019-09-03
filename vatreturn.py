@@ -141,23 +141,19 @@ def obligations(show_all=False):
 
 def return_data(period_key, period_end, vat_csv):
     df = pd.read_csv(vat_csv)
-    assert list(df.columns) == ["VAT period", "SUM of Fee", "SUM of VAT", "VAT rate"]
+    assert list(df.columns) == ["VAT period", "VAT Due Sales", "VAT Due Acquisitions", "VAT Reclaimed Curr Period", "Total Value Sales Ex VAT", "Total Value Purchases Ex VAT", "Total Value Goods Supplied Ex VAT", "Total Acquisitions Ex VAT"  ]
 
     period = df[df["VAT period"] == period_end]
-    net_fee = int(period["SUM of Fee"].iloc[0])
-    vat = int(period["SUM of VAT"].iloc[0])
-    vat_rate = float(period["VAT rate"].iloc[0]) / 100
-    gross_receipts = net_fee + vat
-    vat_due = gross_receipts * vat_rate
-    box_1 = vat_due
-    box_2 = 0  # vat due on acquisitions
+
+    box_1 = int(period["VAT Due Sales"].iloc[0])
+    box_2 = int(period["VAT Due Acquisitions"].iloc[0])  # vat due on acquisitions
     box_3 = box_1 + box_2  # total vat due - calculated: Box1 + Box2
-    box_4 = 0  # vat reclaimed for current period
+    box_4 = int(period["VAT Reclaimed Curr Period"].iloc[0])  # vat reclaimed for current period
     box_5 = abs(box_3 - box_4)  # net vat due (amount to be paid). Calculated: take the figures from Box 3 and Box 4. Deduct the smaller figure from the larger one and use the difference
-    box_6 = gross_receipts  # total value sales ex vat
-    box_7 = 0  # total value purchases ex vat
-    box_8 = 0  # total value goods supplied ex vat
-    box_9 = 0  # total acquisitions ex vat
+    box_6 = int(period["Total Value Sales Ex VAT"].iloc[0])  # total value sales ex vat
+    box_7 = int(period["Total Value Purchases Ex VAT"].iloc[0])  # total value purchases ex vat
+    box_8 = int(period["Total Value Goods Supplied Ex VAT"].iloc[0])  # total value goods supplied ex vat
+    box_9 = int(period["Total Acquisitions Ex VAT"].iloc[0])  # total acquisitions ex vat
     data = {
         "periodKey": period_key,
         "vatDueSales": box_1,
