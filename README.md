@@ -49,3 +49,72 @@ The CSV you've prepared must match this format. The column headers matter and mu
 
 For me this is a table generated using a mysql query on the google sheet scripts editor getting data from mariadb database,
 and I share it using the Google Sheets "publish as CSV" functionality.
+
+I am also providing some guidance on how to connect google sheets to a mysql database but ofcourse this can be a more involved process depending on set-up of your mysql server:
+
+1. In a new googlesheet, open the script editor Tools -> Script Editor, as shown below:
+<img src="https://github.com/pubmania/vatreturn/blob/master/img/GoogleSheets%20Step1.png">
+2. Now give it a name, a function name and then create connection to your database as shown below:
+<img src="https://github.com/pubmania/vatreturn/blob/master/img/Google%20Sheet%20database%20Connection.png">
+3. A sample code is as shown below (YOU WILL NEED TO MAKE CHANGES TO CONN VARIABLE, rs2 VARIABLE AND TO doc VARIABLE FOR THIS TO WORK):
+
+```javascript
+function your_function_name() { 
+  
+  var conn = Jdbc.getConnection('jdbc:mysql://your.mysqlserver.com:3306/your_database_name', 'database_read_only_username', 'database_read_only_password'); // Change it as per your database credentials
+
+  var stmt = conn.createStatement();
+  var start = new Date(); // Get script starting time
+
+//Create a string containing your query  
+//change query as per your database structure
+  var rs2 = 
+      'select date_format(a.expense_date,\'%b-%Y\') as `Month-Year`, b.name as `Category`,  sum(a.amount) as `Totals` from expenses a' +
+      ' join expense_categories b on a.expense_category_id = b.id' +
+      ' where a.is_deleted <> \'1\' ' +
+      ' AND PERIOD_DIFF(DATE_FORMAT(CURDATE(),\'%Y%m\'),DATE_FORMAT(a.expense_date,\'%Y%m\'))<12' +
+      ' group by date_format(a.expense_date,\'%b-%Y\'), b.name'
+  
+  var rs = stmt.executeQuery(rs2);
+
+
+   
+  var doc1 = SpreadsheetApp.getActiveSpreadsheet(); // Returns the currently active spreadsheet
+  var doc = doc1.getSheetByName('SheetName'); //Enter the sheetname you have given on google sheet
+  
+  //delete current content on spreadsheet
+  var start_del, end_del;
+
+  start_del = 1;
+  end_del = doc.getLastRow() - 1;//Number of last row with content
+  if (end_del = -1) {end_del = 1;}
+  //blank rows after last row with content will not be deleted
+  
+  doc.deleteRows(start_del, end_del);
+  //end delete
+  
+  var cell = doc.getRange('a1');
+  var row = 0;
+  var getCount = rs.getMetaData().getColumnCount(); // Mysql table column name count.
+  
+  for (var i = 0; i < getCount; i++){  
+     cell.offset(row, i).setValue(rs.getMetaData().getColumnName(i+1)); // Mysql table column name will be fetched and added in spreadsheet.
+  }  
+  
+  var row = 1; 
+  while (rs.next()) {
+    for (var col = 0; col < rs.getMetaData().getColumnCount(); col++) { 
+      cell.offset(row, col).setValue(rs.getString(col + 1)); // Mysql table column data will be fetch and added in spreadsheet.
+    }
+    row++;
+  } 
+ 
+  
+  rs.close();
+  stmt.close();
+  conn.close();
+  var end = new Date(); // Get script ending time
+  Logger.log('Time elapsed: ' + (end.getTime() - start.getTime())); // To generate script log. To view log click on View -> Logs.
+}
+```
+
