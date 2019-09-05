@@ -6,15 +6,16 @@
 
 {% block content %}
 
-<h1>Welcome to the free flat-rate VAT submittor</h1>
+<h1>Welcome to the free VAT submittor</h1>
 
 <h2>What does this website do?</h2>
-<p>It logs you into the HMRC VAT system, and then submits a spreadsheet (which must be in a particular format) as your VAT return. At the moment it only supports flat rate, because that's all I need.</p>
+<p>It logs you into the HMRC VAT system, and then submits a spreadsheet (which must be in a particular format) as your VAT return.</p>
 
-<p>I created this software for my own use.  It is free to use and made
-available under <a href="/tandc">this License</a>. Using this website
-indicates your agreement with that licence, specifically that it is
-provided without warranty of any kind.</p>
+<p>It is built on top of the work done by Seb Bacon and I have just added the small changes to ensure that code picks up data from CSV for all fields required for VAT submission of non flat rate scheme submitters.</p>
+<p>The changes I have done on this software are for my own use.  It is free to use and made available under <a href="/tandc">this License</a>.</p>
+<p>Using this website indicates your agreement with that licence, specifically that it is provided without warranty of any kind.</p>
+
+<h3> Words below are from original author Seb and I agree 100%.</h3>
 
 <h2>Why does this website exist?</h2>
 <p>Until April 2019, someone with very simple VAT arrangements could do a return by pasting two numbers from a spreadsheet into a form provided by HMRC.</p>
@@ -22,9 +23,12 @@ provided without warranty of any kind.</p>
 <p>On principle, I don't think you should be forced to pay money to do your tax return. And in practice, I don't want to evaluate a load of different services which may or may not be safe to use. It's actually easier and safer to write my own.</p>
 
 <h2>Is this software safe to use?</h2>
-<p>I've only made it for my own use, but it should work for anyone on the flat rate scheme who adds the same flat rate of VAT onto all their sales, has no VAT on acquisitions, and hasn't reclaimed any VAT.</p>
-<p>The software doesn't record ANY personal info (<a href="/privacy">more here</a>).  You just have to make a spreadsheet in a particular format, and make it available as a CSV online. I did it with a pivot table in Google Sheets. If you can't work it out, <a href="mailto:seb.bacon@gmail.com">drop me a line</a> and I'll write up better instructions.</p>
-<p>The software is Open Source and <a href="https://github.com/sebbacon/vatreturn">available on GitHub</a></p>
+<p>I've only made it for my own use, but it should work for anyone.</p>
+<p>The software doesn't record ANY personal info (<a href="/privacy">more here</a>).  
+  You just have to make a spreadsheet in a particular format, and make it available as a CSV online. 
+  I did it using data imported from MySQL database into Google Sheets. 
+  If you can't work it out, <a href="mailto:ank.mittal@gmail.com">drop me a line</a> and I'll try and assist the best I can.</p>
+<p>The software is Open Source and source code is <a href-"https://github.com/pubmania/vatreturn">available on Github</a>. The original source code from Seb is also <a href="https://github.com/sebbacon/vatreturn">available on Github</a></p>
 
 <p>It then takes the spreadsheet and submits it to HMRC for you.</p>
 
