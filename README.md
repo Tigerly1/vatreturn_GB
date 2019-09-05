@@ -4,7 +4,7 @@ Free, Open Source software for submitting VAT returns to HMRC under their MTD (M
 
 This software logs you into the HMRC VAT system, and then submits a spreadsheet (which must be in a particular format) as your VAT return. This is modified version that supports submission of VAT returns of any kind as it just reads data from the csv for 7 of the 9 boxes, uses that data to compute the remaining two boxes on submission form and then submits the data as VAT return to HMRC.
 
-~~You could deploy this to Heroku yourself for free (use the button below), or you can use my deployment at https://standard-vat-return.herokuapp.com - it doesn't store any data, so it's safe to use it from a security point of view. You'll either have to read the code or trust me that the calculations it submits are correct, though.~~
+You could deploy this to Heroku yourself for free (use the button below), ~~or you can use my deployment at https://standard-vat-return.herokuapp.com - it doesn't store any data, so it's safe to use it from a security point of view. You'll either have to read the code or trust me that the calculations it submits are correct, though.~~
 
 My deployment is still on HMRC sandbox environment so you will not be able to use it to submit your VAT returns and even if you do deploy your own version you will need to get it approved by HMRC before you can use it. I have submitted approval request for mine and will update here as soon as I have the approval. 
 
