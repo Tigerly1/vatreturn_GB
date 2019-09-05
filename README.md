@@ -8,6 +8,8 @@ You could deploy this to Heroku yourself for free (use the button below), or you
 
 Read more about the app at https://standard-vat-return.herokuapp.com
 
+<img src="https://github.com/pubmania/vatreturn/blob/master/img/VAT%20Return%20MTD%20Bridge.gif">
+
 
 # Deploy
 
