@@ -80,6 +80,10 @@
 
 <p>When you press submit, you a return will be generated for you, <em>but not submitted</em>; you'll get a chance to review it before submitting.</p>
 
+  {% if error %}
+           <p><strong>Error:</strong> {{ error }}
+  {% endif %}
+           
   <form action="{{ url_for('preview_return', period_key=g.period_key, period_end=g.period_end) }}" method="get">
   <div class="form-group">
     <label for="url">Link to CSV (e.g. published from Google Sheets)</label>
@@ -92,7 +96,7 @@
   <hr>
   <div class="alert alert-secondary">
     <h3>Example spreadsheet</h3>
-    <img src="/img/spreadsheet.png">
+    <img src="/img/spreadsheet.png" width="50%">
 </div>
 {% endif %}
 {% endblock %}
