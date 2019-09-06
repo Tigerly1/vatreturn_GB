@@ -174,16 +174,16 @@ def return_data(period_key, period_end, vat_csv):
 @login_required
 def preview_return(period_key):
     error = None
-    g.period_key = period_key
-    g.vat_csv = request.args.get('vat_csv', '')
-    g.period_end = request.args.get('period_end', '')
-    if g.vat_csv:
-        try:
-            g.data = return_data(g.period_key, g.period_end, g.vat_csv)
-            return render_template('preview_return.html')
-        except:
-            error = "Something went wrong while processing the CSV file. Please check that all values on CSV are positive and without decimals. It can also be that there is no entry for the period you are trying to submit the return for."
-            return render_template('preview_return.html',error = error)
+    try:        
+        g.period_key = period_key
+        g.vat_csv = request.args.get('vat_csv', '')
+        g.period_end = request.args.get('period_end', '')
+        if g.vat_csv:
+                g.data = return_data(g.period_key, g.period_end, g.vat_csv)
+        return render_template('preview_return.html')
+    except:
+        error = "Something went wrong while processing the CSV file. Please check that all values on CSV are positive and without decimals. It can also be that there is no entry for the period you are trying to submit the return for."
+        return render_template('preview_return.html',error = error)
 
 
 @app.route("/<string:period_key>/send", methods=('POST',))
