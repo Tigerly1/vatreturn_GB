@@ -81,7 +81,9 @@
 <p>When you press submit, you a return will be generated for you, <em>but not submitted</em>; you'll get a chance to review it before submitting.</p>
 
   {% if error %}
+        <div class="alert alert-danger">
            <p><strong>Error:</strong> {{ error }}
+        </div>
   {% endif %}
            
   <form action="{{ url_for('preview_return', period_key=g.period_key, period_end=g.period_end) }}" method="get">
