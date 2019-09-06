@@ -182,11 +182,7 @@ def preview_return(period_key):
                 g.data = return_data(g.period_key, g.period_end, g.vat_csv)
         return render_template('preview_return.html')
     except:
-        error = "Something went wrong while processing the CSV file. Please check that: \n"+
-        "1. All values on CSV are positive and without decimals. \n"+
-        "2. It can also be that there is no entry for the period you are trying to submit the return for.\n"+
-        "3. If you are using link for CSV, make sure pasting that link in browser results in\n"
-        "a CSV file being downloaded and not a web page being opened."
+        error = "<p>Something went wrong while processing the CSV file. Please check that:</p> <ol>1. All values on CSV are positive and without decimals.</ol><ol>2. It can also be that there is no entry for the period you are trying to submit the return for.</ol><ol>3. If you are using link for CSV, make sure pasting that link in browser results in a CSV file being downloaded and not a web page being opened.</ol>"
         return render_template('preview_return.html',error = error)
 
 
