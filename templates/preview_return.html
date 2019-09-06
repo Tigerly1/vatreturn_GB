@@ -82,41 +82,68 @@
   </div>
   {% else %}
 
-<h1>Provide your VAT data for period {{ g.period_end }} </h1>
+<h1>Provide your VAT data for period 2017-03-31 </h1>
 
-  {% if error %}
+<div class="row">
+
+<div class="col-sm-6">
+     <br>
+	   {% if error %}
         <div class="alert alert-danger">
            <p><strong>Error:</strong> {{ error|safe }}
         </div>
-  {% endif %}
-           
-  <form action="{{ url_for('preview_return', period_key=g.period_key, period_end=g.period_end) }}" method="get">
+	   {% endif %}
+
+	 <br><br>
+        <form action="/18A1/preview?period_end=2017-03-31" method="get">
   <div class="form-group">
     <label for="url">Link to CSV (e.g. published from Google Sheets)</label>
-    <input type="hidden" name="period_end" value="{{ g.period_end }}">
+    <input type="hidden" name="period_end" value="2017-03-31">
     <input name="vat_csv" type="url" class="form-control" id="url" aria-describedby="urlHelp" placeholder="https://docs.google.com/....">
     <small id="urlHelp" class="form-text text-muted">This is never stored anywhere on our system</small>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+      <div class="row">
+    <br><br>
+      </div>
+    <div class="alert alert-warning" role="alert">
 <p>When you press submit, a return will be generated for you, 
   <em>but not submitted</em>; you'll get a chance to review it before 
   submitting.</p>
+    </div>
+</div>
+    <div class="col-sm-6">
+    <div class="alert alert-info" role="alert">
+        <p>This should be a link to a CSV with the headers:</p>
 
-<p>This should be a link to a CSV with the headers:</p> 
-<ol>1. VAT period</code></ol><ol>2. VAT Due Sales	VAT Due Acquisitions</ol><ol>3. VAT Reclaimed Curr Period</ol>
-<ol>4. Total Value Sales Ex VAT</ol><ol>5. Total Value Purchases Ex VAT</ol><ol>6. Total Value Goods Supplied Ex VAT</ol>
-<ol>7. Total Acquisitions Ex VAT</ol> 
-<p>named exactly as shown</p>
+<p></p><li display="block">VAT period</li>
+<li display="block">VAT Due Sales</li>
+<li display="block">VAT Due Acquisitions</li>
+<li display="block">VAT Reclaimed Curr Period</li>
+<li display="block">Total Value Sales Ex VAT</li>
+<li display="block">Total Value Purchases Ex VAT</li>
+<li display="block">Total Value Goods Supplied Ex VAT</li>
+<li display="block">Total Acquisitions Ex VAT</li>
+<br>
+<p>named exactly as shown above.</p>
+
 <p>This can have as many rows as you like, but exactly one row must match the VAT period that 
-  you're currently submitting for (viz. <code>{{ g.period_end }}</code>).  
+  you're currently submitting for (viz. <code>2017-03-31</code>).  
   When you click the submit button, this software will simply sum any such matching rows and 
   fill out your return accordingly.</p>
+    </div>
+    </div>
+</div>  
+           
+
+
 
   <hr>
   <div class="alert alert-secondary">
     <h3>Example spreadsheet</h3>
     <img src="/img/spreadsheet.png" width="100%" height="100%">
 </div>
+
 {% endif %}
 {% endblock %}
