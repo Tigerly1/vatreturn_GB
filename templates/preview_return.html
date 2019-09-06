@@ -7,8 +7,11 @@
 {% block content %}
 
 {% if request.args.confirmation_error %}
-  <div class="alert alert-danger">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
     You can only submit a return when you have made the declaration that the information is true and complete
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
   </div>
  {% endif %}
 
@@ -85,60 +88,55 @@
 <h1>Provide your VAT data for period 2017-03-31 </h1>
 
 <div class="row">
+    <div class="col-sm-8">
+	    <div class="alert alert-light" role="alert">
+        	<p>This should be a link to a CSV with the headers:</p>
+		<p></p><li display="block">VAT period</li>
+		<li display="block">VAT Due Sales</li>
+		<li display="block">VAT Due Acquisitions</li>
+		<li display="block">VAT Reclaimed Curr Period</li>
+		<li display="block">Total Value Sales Ex VAT</li>
+		<li display="block">Total Value Purchases Ex VAT</li>
+		<li display="block">Total Value Goods Supplied Ex VAT</li>
+		<li display="block">Total Acquisitions Ex VAT</li>
+		<br>
+		<p>named exactly as shown above.</p>
 
-<div class="col-sm-6">
-     <br>
-	   {% if error %}
-        <div class="alert alert-danger">
-           <p><strong>Error:</strong> {{ error|safe }}
-        </div>
-	   {% endif %}
-
-	 <br><br>
-        <form action="/18A1/preview?period_end=2017-03-31" method="get">
-  <div class="form-group">
-    <label for="url">Link to CSV (e.g. published from Google Sheets)</label>
-    <input type="hidden" name="period_end" value="2017-03-31">
-    <input name="vat_csv" type="url" class="form-control" id="url" aria-describedby="urlHelp" placeholder="https://docs.google.com/....">
-    <small id="urlHelp" class="form-text text-muted">This is never stored anywhere on our system</small>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-      <div class="row">
-    <br><br>
-      </div>
-    <div class="alert alert-warning" role="alert">
-<p>When you press submit, a return will be generated for you, 
-  <em>but not submitted</em>; you'll get a chance to review it before 
-  submitting.</p>
+		<p>This can have as many rows as you like, but exactly one row must match the VAT period that 
+		  you're currently submitting for (viz. <code>2017-03-31</code>).  
+		  When you click the submit button, this software will simply sum any such matching rows and 
+		  fill out your return accordingly.</p>
+    	</div>
     </div>
-</div>
-    <div class="col-sm-6">
-    <div class="alert alert-info" role="alert">
-        <p>This should be a link to a CSV with the headers:</p>
+	<div class="col-sm-4">
+	     <br>
+		   {% if error %}
+		<div class="alert alert-danger">
+		   <p><strong>Error:</strong> {{ error|safe }}
+		</div>
+		   {% endif %}
 
-<p></p><li display="block">VAT period</li>
-<li display="block">VAT Due Sales</li>
-<li display="block">VAT Due Acquisitions</li>
-<li display="block">VAT Reclaimed Curr Period</li>
-<li display="block">Total Value Sales Ex VAT</li>
-<li display="block">Total Value Purchases Ex VAT</li>
-<li display="block">Total Value Goods Supplied Ex VAT</li>
-<li display="block">Total Acquisitions Ex VAT</li>
-<br>
-<p>named exactly as shown above.</p>
-
-<p>This can have as many rows as you like, but exactly one row must match the VAT period that 
-  you're currently submitting for (viz. <code>2017-03-31</code>).  
-  When you click the submit button, this software will simply sum any such matching rows and 
-  fill out your return accordingly.</p>
-    </div>
-    </div>
+		 <br><br>
+		<form action="/18A1/preview?period_end=2017-03-31" method="get">
+	  <div class="form-group">
+		    <label for="url">Link to CSV (e.g. published from Google Sheets)</label>
+		    <input type="hidden" name="period_end" value="2017-03-31">
+		    <input name="vat_csv" type="url" class="form-control" id="url" aria-describedby="urlHelp" placeholder="https://docs.google.com/....">
+		    <small id="urlHelp" class="form-text text-muted">This is never stored anywhere on our system</small>
+		  </div>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		  </form>
+		      <div class="row">
+		    <br><br>
+	    </div>
+	    <div class="alert alert-primary" role="alert">
+		<p>When you press submit, a return will be generated for you, 
+		  <em>but not submitted</em>; you'll get a chance to review it before 
+		  submitting.</p>
+	    </div>
+	</div>
 </div>  
-           
-
-
-
+        
   <hr>
   <div class="alert alert-secondary">
     <h3>Example spreadsheet</h3>
