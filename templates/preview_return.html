@@ -74,20 +74,7 @@
   </form>
   {% else %}
 
-  <h1>Provide your VAT data for period {{ g.period_end }} </h1>
-<p>This should be a link to a CSV with the headers:</p> 
-<ol>VAT period</code></ol><ol>VAT Due Sales	VAT Due Acquisitions</ol><ol>VAT Reclaimed Curr Period</ol>
-<ol>Total Value Sales Ex VAT</ol><ol>Total Value Purchases Ex VAT</ol><ol>Total Value Goods Supplied Ex VAT</ol>
-<ol>Total Acquisitions Ex VAT</ol> 
-<p>named exactly as shown</p>
-<p>This can have as many rows as you like, but exactly one row must match the VAT period that 
-  you're currently submitting for (viz. <code>{{ g.period_end }}</code>).  
-  When you click the submit button, this software will simply sum any such matching rows and 
-  fill out your return accordingly.</p>
-
-<p>When you press submit, you a return will be generated for you, 
-  <em>but not submitted</em>; you'll get a chance to review it before 
-  submitting.</p>
+<h1>Provide your VAT data for period {{ g.period_end }} </h1>
 
   {% if error %}
         <div class="alert alert-danger">
@@ -104,6 +91,20 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+<p>When you press submit, a return will be generated for you, 
+  <em>but not submitted</em>; you'll get a chance to review it before 
+  submitting.</p>
+
+<p>This should be a link to a CSV with the headers:</p> 
+<ol>1. VAT period</code></ol><ol>2. VAT Due Sales	VAT Due Acquisitions</ol><ol>3. VAT Reclaimed Curr Period</ol>
+<ol>4. Total Value Sales Ex VAT</ol><ol>5. Total Value Purchases Ex VAT</ol><ol>6. Total Value Goods Supplied Ex VAT</ol>
+<ol>7. Total Acquisitions Ex VAT</ol> 
+<p>named exactly as shown</p>
+<p>This can have as many rows as you like, but exactly one row must match the VAT period that 
+  you're currently submitting for (viz. <code>{{ g.period_end }}</code>).  
+  When you click the submit button, this software will simply sum any such matching rows and 
+  fill out your return accordingly.</p>
+
   <hr>
   <div class="alert alert-secondary">
     <h3>Example spreadsheet</h3>
