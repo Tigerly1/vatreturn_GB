@@ -6,17 +6,16 @@
 
 {% block content %}
 
-
-  {% if g.data %}
-
-  <h1>Review and confirm your VAT return</h1>
-  <p>Please check the following carefully. If you're happy with it, then click submit.</p>
-
 {% if request.args.confirmation_error %}
   <div class="alert alert-danger">
     You can only submit a return when you have made the declaration that the information is true and complete
   </div>
  {% endif %}
+
+  {% if g.data %}
+
+  <h1>Review and confirm your VAT return</h1>
+  <p>Please check the following carefully. If you're happy with it, then click submit.</p>
 
 <div class="row">
   
