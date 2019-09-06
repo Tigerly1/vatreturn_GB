@@ -75,10 +75,19 @@
   {% else %}
 
   <h1>Provide your VAT data for period {{ g.period_end }} </h1>
-<p>This should be a link to a CSV with the headers <code>VAT period</code>, <code>VAT Due Sales	VAT Due Acquisitions</code>,<code>VAT Reclaimed Curr Period</code>,	<code>Total Value Sales Ex VAT</code>, <code>Total Value Purchases Ex VAT</code>, <code>Total Value Goods Supplied Ex VAT</code>, <code>Total Acquisitions Ex VAT</code> (named like exactly like that) </p>
-<p>This can have as many rows as you like, but exactly one row must match the VAT period you're currently submitting for (viz. <code>{{ g.period_end }}</code>).  When you click the submit button, this software will simply sum any such matching rows and fill out your return accordingly.</p>
+<p>This should be a link to a CSV with the headers:</p> 
+<ol>VAT period</code></ol><ol>VAT Due Sales	VAT Due Acquisitions</ol><ol>VAT Reclaimed Curr Period</ol>
+<ol>Total Value Sales Ex VAT</ol><ol>Total Value Purchases Ex VAT</ol><ol>Total Value Goods Supplied Ex VAT</ol>
+<ol>Total Acquisitions Ex VAT</ol> 
+<p>named exactly as shown</p>
+<p>This can have as many rows as you like, but exactly one row must match the VAT period that 
+  you're currently submitting for (viz. <code>{{ g.period_end }}</code>).  
+  When you click the submit button, this software will simply sum any such matching rows and 
+  fill out your return accordingly.</p>
 
-<p>When you press submit, you a return will be generated for you, <em>but not submitted</em>; you'll get a chance to review it before submitting.</p>
+<p>When you press submit, you a return will be generated for you, 
+  <em>but not submitted</em>; you'll get a chance to review it before 
+  submitting.</p>
 
   {% if error %}
         <div class="alert alert-danger">
