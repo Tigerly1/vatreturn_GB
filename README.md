@@ -1,4 +1,4 @@
-Free, Open Source software for submitting VAT returns to HMRC under their MTD (Making Tax Digital) scheme. Needs some work to support any kind of VAT return.
+Free, Open Source software for submitting VAT returns to HMRC under their MTD (Making Tax Digital) scheme. ~~Needs some work to support any kind of VAT return.~~
 
 # About
 
