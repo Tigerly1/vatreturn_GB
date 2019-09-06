@@ -5,36 +5,33 @@
 {% endblock %}
 
 {% block content %}
-
+<h2> <em>Words below are from original author Seb and I agree 100%.</em></h2>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="what-tab" data-toggle="tab" href="#what" role="tab" aria-controls="what" aria-selected="false"><strong>What?</strong></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="why-tab" data-toggle="tab" href="#why" role="tab" aria-controls="why" aria-selected="false"></strong>Why?</strong></a>
+    <a class="nav-link" id="why-tab" data-toggle="tab" href="#why" role="tab" aria-controls="why" aria-selected="false"><strong>Why?</strong></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="safe-tab" data-toggle="tab" href="#safe" role="tab" aria-controls="safe" aria-selected="true"></strong>Safe?</strong></a>
+    <a class="nav-link" id="safe-tab" data-toggle="tab" href="#safe" role="tab" aria-controls="safe" aria-selected="true"><strong>Safe?</strong></a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade" id="what" role="tabpanel" aria-labelledby="what-tab">
+  <div class="tab-pane fade active show" id="what" role="tabpanel" aria-labelledby="what-tab">
 	  <h2>What does this website do?</h2>
 		<p>It logs you into the HMRC VAT system, and then submits a spreadsheet (which must be in a particular format) as your VAT return.</p>
-
 		<p>It is built on top of the work done by Seb Bacon and I have just added the small changes to ensure that code picks up data from CSV for all fields required for VAT submission of non flat rate scheme submitters.</p>
 		<p>The changes I have done on this software are for my own use.  It is free to use and made available under <a href="/tandc">this License</a>.</p>
 		<p>Using this website indicates your agreement with that licence, specifically that it is provided without warranty of any kind.</p>
   </div>
   <div class="tab-pane fade" id="why" role="tabpanel" aria-labelledby="why-tab">
-	<h2> <em>Words below are from original author Seb and I agree 100%.</em></h3>
-
 	<h2>Why does this website exist?</h2>
 		<p>Until April 2019, someone with very simple VAT arrangements could do a return by pasting two numbers from a spreadsheet into a form provided by HMRC.</p>
 		<p>Now, under their "Making Things Digital" programme, this is no longer possible: you have to evaluate, pay for and use third party commercial software to do your return.</p>
 		<p>On principle, I don't think you should be forced to pay money to do your tax return. And in practice, I don't want to evaluate a load of different services which may or may not be safe to use. It's actually easier and safer to write my own.</p>
   </div>
-  <div class="tab-pane fade active show" id="safe" role="tabpanel" aria-labelledby="safe-tab">
+  <div class="tab-pane fade" id="safe" role="tabpanel" aria-labelledby="safe-tab">
 	<h2>Is this software safe to use?</h2>
 		<p>I've only made it for my own use, but it should work for anyone.</p>
 		<p>The software doesn't record ANY personal info (<a href="/privacy">more here</a>).  
