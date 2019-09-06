@@ -86,7 +86,14 @@
   {% else %}
 
 <h1>Provide your VAT data for period 2017-03-31 </h1>
-
+   {% if error %}
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	   <p><strong>Error:</strong> {{ error|safe }}
+	   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	   	 <span aria-hidden="true">×</span>
+	   </button>
+	</div>
+   {% endif %}
 <div class="row">
     <div class="col-sm-8">
 	    <div class="alert alert-light" role="alert">
@@ -109,13 +116,6 @@
     	</div>
     </div>
 	<div class="col-sm-4">
-	     <br>
-		   {% if error %}
-		<div class="alert alert-danger">
-		   <p><strong>Error:</strong> {{ error|safe }}
-		</div>
-		   {% endif %}
-
 		 <br><br>
 		<form action="/18A1/preview?period_end=2017-03-31" method="get">
 	  <div class="form-group">
