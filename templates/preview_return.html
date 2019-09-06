@@ -12,11 +12,14 @@
   {% endif %}
 
   {% if g.data %}
-<div>
+
   <h1>Review and confirm your VAT return</h1>
   <p>Please check the following carefully. If you're happy with it, then click submit.</p>
-<div class="col-sm-8">
-  <table class="table striped">
+
+<div class="row">
+  
+  <div class="col-sm-8">
+      <table class="table striped">
     <tr>
       <th>VAT due on sales (box 1)</th>
       <td>{{ g.data.vatDueSales }}</td>
@@ -58,24 +61,23 @@
       <td>{{ g.data.finalised }}</td>
     </tr>
   </table>
-</div>
-
-<div class="col-sm-4">
-  <div class="alert alert-warning">
+  </div>
+    <div class="col-sm-4">
+      <div class="alert alert-warning">
     When you submit this VAT information you are making a legal declaration that the information is true and complete. A false declaration can result in prosecution.
-  </div>
-  <form action="{{ url_for('send_return', period_key=g.data.periodKey) }}" method="post">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="complete" value="complete" id="confirmation">
-      <label class="form-check-label" for="confirmation">
-        I confirm this information is true and complete
-      </label>
-    </div>
-    <input type="hidden" name="vat_csv" value="{{ g.vat_csv }}">
-    <input type="hidden" name="period_end" value="{{ g.period_end }}">
-    <input type="submit" value="Submit this return to HMRC" class="btn btn-info">
-  </form>
-  </div>
+   </div>
+    <form action="{{ url_for('send_return', period_key=g.data.periodKey) }}" method="post">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="complete" value="complete" id="confirmation">
+        <label class="form-check-label" for="confirmation">
+          I confirm this information is true and complete
+        </label>
+      </div>
+      <input type="hidden" name="vat_csv" value="{{ g.vat_csv }}">
+      <input type="hidden" name="period_end" value="{{ g.period_end }}">
+      <input type="submit" value="Submit this return to HMRC" class="btn btn-info">
+    </form>
+   </div>
   </div>
   {% else %}
 
