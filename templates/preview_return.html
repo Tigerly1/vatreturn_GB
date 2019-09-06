@@ -12,6 +12,7 @@
   {% endif %}
 
   {% if g.data %}
+<div>
   <h1>Review and confirm your VAT return</h1>
   <p>Please check the following carefully. If you're happy with it, then click submit.</p>
 <div class="col-sm-8">
@@ -74,6 +75,7 @@
     <input type="hidden" name="period_end" value="{{ g.period_end }}">
     <input type="submit" value="Submit this return to HMRC" class="btn btn-info">
   </form>
+  </div>
   </div>
   {% else %}
 
