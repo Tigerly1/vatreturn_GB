@@ -10,7 +10,7 @@ My deployment is still on HMRC sandbox environment so you will not be able to us
 
 Read more about the app at https://standard-vat-return.herokuapp.com
 
-<img src="https://github.com/pubmania/vatreturn/blob/master/img/VAT%20Return%20MTD%20Bridge.gif">
+<img src="https://github.com/pubmania/vatreturn/blob/master/img/VAT%20Return%20MTD%20Bridge%20V1.0.gif">
 
 
 # Deploy
