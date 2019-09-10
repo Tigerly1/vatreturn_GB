@@ -5,16 +5,19 @@
 {% endblock %}
 
 {% block content %}
+<div>
   <h1>Return submission</h1>
-  <div class="row">
     {% if g.response.error %}
-    <h3>There was a problem. This is the error:</h3>
+    <div>
+      <h3>There was a problem. This is the error:</h3><br></br>
+    </div>
         {% for error_message in g.response.error.errors %}
         <div class="alert alert-danger">
-          {{ error_message.code }}: {{ error_message.message }}
+          <strong>{{ error_message.code }}:</strong> {{ error_message.message }}
         </div>  
         {% endfor %}
     {% else %}
+      <div class="row">
         <div class="col-sm-4">
           <div class="alert alert-success">
             <p>Return was submitted successfully.</p>
@@ -73,6 +76,8 @@
             </tr>
           </table>
          </div>
+        </div>
       {% endif %}    
-  </div>
+
+</div>
 {% endblock %}
