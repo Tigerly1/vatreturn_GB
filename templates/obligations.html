@@ -6,14 +6,11 @@
 
 {% block content %}
   {% if g.error %}
-    <div class="error">
-      {{ g.error }}
-    </div>
-    {% for error_message in g.error %}
+    
         <div class="alert alert-danger">
-          <strong>{{ g.error.code }}:</strong> {{ error_message.message }}
+          <strong>{{ g.error.code }}:</strong> {{ g.error.message }}
         </div>  
-    {% endfor %}
+    
   <a href="javascript:history.back()" class="btn btn-info" role="button">Retry</a>
   {% else %}
   <p>This is a list of your outstanding obligations:</p>
