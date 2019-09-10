@@ -1,11 +1,11 @@
 {
-  "name": "CSV to HMRC flat rate VAT return",
-  "description": "A simple system for submitting flat rate VAT returns",
+  "name": "CSV to HMRC VAT return",
+  "description": "A simple system for submitting VAT returns",
   "keywords": [
     "oauth"
   ],
-  "website": "https://github.com/sebbacon/vatreturn",
-  "repository": "https://github.com/sebbacon/vatreturn",
+  "website": "https://github.com/pubmania/vatreturn",
+  "repository": "https://github.com/pubmania/vatreturn",
   "env": {
     "HMRC_API_HOST": {
       "description": "HMRC api host",
