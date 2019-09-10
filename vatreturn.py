@@ -134,7 +134,7 @@ def obligations(show_all=False):
     obligations = do_action('get', 'obligations', params)
     if 'error' in obligations:
         g.error = obligations['error']
-        return redirect(url_for("get_vat_no",error=g.error))
+        return redirect(url_for("get_vat_no.html",error=g.error))
     else:
         g.obligations = obligations['obligations']
         return render_template('obligations.html')
