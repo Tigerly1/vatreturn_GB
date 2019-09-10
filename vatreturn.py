@@ -133,8 +133,8 @@ def obligations(show_all=False):
         params = {'status': 'O'}
     obligations = do_action('get', 'obligations', params)
     if 'error' in obligations:
-        #g.error = obligations['error']
-        return render_template('get_vat_number.html', error=obligations['error'])
+        g.error = obligations['error']
+        return render_template('get_vat_number.html', error=g.error)
     else:
         g.obligations = obligations['obligations']
         return render_template('obligations.html')
