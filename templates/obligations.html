@@ -7,7 +7,7 @@
 {% block content %}
   {% if g.error %}
     <div class="error">
-      g.error
+      {{ g.error }}
     </div>
     {% for error_message in g.error %}
         <div class="alert alert-danger">
