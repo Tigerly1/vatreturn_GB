@@ -23,7 +23,7 @@
             <p>Return was submitted successfully.</p>
           </div>
           <p>The return you just submitted is below.</p>
-          <p>Tour "form bundle number" is <code>{{ g.response.formBundleNumber }}</code>.  This is a kind of reference number, so you should make a note of it.</p>
+          <p>Your "form bundle number" is <code>{{ g.response.formBundleNumber }}</code>.  This is a kind of reference number, so you should make a note of it.</p>
           {% if g.response.paymentIndicator == 'DD' %}
           <p>You have opted to pay by direct debit.  The reference number for this is <code>{{ g.response.chargeRefNumber }}</code>.</p>
           {% endif %}
