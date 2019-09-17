@@ -10,6 +10,7 @@ from flask import render_template, g
 from flask import request
 from flask import session
 from hmrc_provider import make_hmrc_blueprint, hmrc
+from handlers import errors
 
 import pandas as pd
 
@@ -29,7 +30,7 @@ hmrc_bp = make_hmrc_blueprint(
 app.register_blueprint(
     hmrc_bp,
     url_prefix="/login",)
-
+app.register_blueprint(errors)
 
 def login_required(f):
     @wraps(f)
@@ -42,17 +43,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@app_errorhandler(500)
-def error_500(error):
-    return render_template('500.html'), 500
 
-@app_errorhandler(403)
-def error_403(error):
-    return render_template('403.html'), 403
-
-@app_errorhandler(404)
-def error_404(error):
-    return render_template('404.html'), 404
 
 @app.route("/privacy")
 def privacy():
