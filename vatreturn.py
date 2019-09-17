@@ -42,15 +42,15 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@app.app_errorhandler(500)
+@app_errorhandler(500)
 def error_500(error):
     return render_template('500.html'), 500
 
-@app.app_errorhandler(403)
+@app_errorhandler(403)
 def error_403(error):
     return render_template('403.html'), 403
 
-@app.app_errorhandler(404)
+@app_errorhandler(404)
 def error_404(error):
     return render_template('404.html'), 404
 
