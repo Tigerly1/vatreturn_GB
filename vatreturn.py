@@ -208,9 +208,12 @@ def send_return(period_key):
 
 @app.route("/logout")
 def logout():
-    del(session['hmrc_oauth_token'])
-    del(session['hmrc_vat_number'])
-    return redirect(url_for("index"))
+    try:
+        del(session['hmrc_oauth_token'])
+        del(session['hmrc_vat_number'])
+        return redirect(url_for("index"))
+    except Exception as e:
+        return redirect(url_for("error_500"))
 
 
 def create_test_user():
