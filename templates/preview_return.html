@@ -85,7 +85,8 @@
   </div>
   {% else %}
 
-<h1>Provide your VAT data for period {{ g.period_end }} </h1
+<h1>Provide your VAT data for period {{ g.period_end }} </h1>
+<div class="row">
    {% if error %}
 	<div class="alert alert-danger alert-dismissible fade show" role="alert">
 	   <p><strong>Error:</strong> {{ error|safe }}
@@ -94,7 +95,7 @@
 	   </button>
 	</div>
    {% endif %}
-<div class="row">
+<div class="row">	
     <div class="col-sm-8">
 	    <div class="alert alert-light" role="alert">
         	<p>This should be a link to a CSV with the headers:</p>
@@ -127,7 +128,7 @@
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		  </form>
 		      <div class="row">
-		    <br><br>
+		    <br>
 	    </div>
 	    <div class="alert alert-primary" role="alert">
 		<p>When you press submit, a return will be generated for you, 
@@ -135,8 +136,8 @@
 		  submitting.</p>
 	    </div>
 	</div>
-</div>  
-        
+	</div>  
+</div>        
   <hr>
   <div class="alert alert-secondary">
     <h3>Example spreadsheet</h3>
