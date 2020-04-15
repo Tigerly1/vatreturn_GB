@@ -39,7 +39,8 @@ Nothing is stored in the app - the data is fetched from a CSV at a URL you defin
 * Set environment variables on Heroku as per the image shown below:
 
     - OAUTHLIB_INSECURE_TRANSPORT=1 
-    - FLASK_DEBUG=1 FLASK_APP=vatreturn.py flask run 
+    - FLASK_DEBUG=1 
+    - FLASK_APP=vatreturn.py flask run 
     - redirect_url = http://localhost:5000/
 <img src="https://github.com/pubmania/vatreturn/blob/master/img/Heroku%20Configuration.png">
 
